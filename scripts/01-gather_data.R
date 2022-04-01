@@ -34,4 +34,4 @@ n<- dim(data)[1]
 data <- data[1:(n-1),]
 
 ### Saving as CSV ###
-write.csv(x = data, file = "raw_data")
+write.csv(x = data, file = "raw_data.csv")

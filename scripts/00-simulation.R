@@ -30,8 +30,9 @@ Water_source_rural <- Water_source_rural %>%
 Time_to_water_source_rural <- Time_to_water_source_rural %>%
   rename("Time to Water Source, Rural" = time_rural)
 
-### Combining Dataframes ###
+### Combining Dataframes into Simulated Dataset ###
 
 Water_source <- cbind(Water_source_urban,Water_source_rural)
 Time_to_source <- cbind(Time_to_water_source_urban,Time_to_water_source_rural)
 df <- cbind(Water_source,Time_to_source)
+head(df)
