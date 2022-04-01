@@ -1,6 +1,5 @@
 library(pdftools)
 library(tidyverse)
-library(tabulizer)
 ### Outline ###
   # PDF table will be split into 
 
