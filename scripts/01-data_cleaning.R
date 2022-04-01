@@ -1,8 +1,8 @@
-#### Preamble ####
-# Purpose: Clean the survey data downloaded from [...UPDATE ME!!!!!]
-# Author: Rohan Alexander [CHANGE THIS TO YOUR NAME!!!!]
-# Data: 3 January 2021
-# Contact: rohan.alexander@utoronto.ca [PROBABLY CHANGE THIS ALSO!!!!]
+#### Preamble ####]
+# Purpose: To convert PDF Table to CSV to be read
+# Author: Jonathan Goodwin
+# Data: 28 March 2022
+# Contact: jon.goodwin@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: 
 # - Need to have downloaded the ACS data and saved it to inputs/data
