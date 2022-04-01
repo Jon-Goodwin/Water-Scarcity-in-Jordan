@@ -9,7 +9,7 @@
 
 
 ### Libraries used ###
-#1.tidyverse
+#1.[tidyverse](https://style.tidyverse.org/documentation.html)
 #2.pointblank
 #3.pdftools
 #4.knitr
