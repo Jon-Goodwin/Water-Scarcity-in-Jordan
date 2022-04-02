@@ -30,14 +30,19 @@ the Jordan Population and Family Health Survey into a raw_data file.
 
 
 ### Step 2 ###
-Cleaned raw data file
+Cleaned raw data file.
+Tested cleaned data using Pointblank package.
 
 ### Step 3 ###
-
+Compose paper with analysis.
 
 ### Libraries used ###
 1.[tidyverse](https://style.tidyverse.org/documentation.html)
+
 2.[pointblank](https://rich-iannone.github.io/pointblank/)
+
 3.[pdftools](https://cran.r-project.org/web/packages/pdftools/index.html)
+
 4.[knitr](https://www.rdocumentation.org/packages/knitr/versions/1.30)
+
 5.[haven](https://www.rdocumentation.org/packages/haven/versions/2.4.3)
