@@ -54,9 +54,11 @@ kable_styling(full_width = F) %>%
 kable_styling(latex_options = "hold_position")
 ```
 
-  There are a total of 10 different sources of water captured by the survey, Piped into residence, Public tap, well in residence, public well, spring, rainwater, tanker truck, bottled water, and other. Respondents were grouped into two categories, urban and rural.
+  There are a total of 10 different sources of water captured by the survey, Piped into residence, Public tap, well in residence, public well, spring, rainwater, tanker truck, bottled water, and other. 
 
-  Additionally the time to the water source is given as an over or under of 15 minutes.
+  Respondents were grouped into two categories, urban and rural. The last variable is a total for the entire population.
+
+  Additionally the time to the water source is given as an over or under of 15 minutes. And this is also divided between urban, rural and total variables.
 
 \newpage
 
@@ -79,7 +81,7 @@ p + coord_flip()
 
 \newpage
 
-  In Figure \@ref(fig:fig2) we take a closer look at a similar plot but with the piped into residence source removed.
+  In Figure \@ref(fig:fig2) we take a closer look at a similar plot but with the piped into residence source removed to better see the alternatives to piped water sources. Most of these sources notably are attributed to rurarl residents, with no source accounting for even 5% of the urban population.
 
 ```{r fig2, echo = FALSE, fig.cap = "Bar plot without piped into residence response"}
 ### Reduced Bar Plot ###
@@ -117,7 +119,9 @@ q
 
   According to the United States Agency for International Development[@citeUSAID] "Jordan is one of the most water-scarce countries in the world", the country faces problems with it's ground water resources being drained twice as fast as they can be replenished. This explains the lack of use of wells we see in the country in the dataset and the possible over reliance on bottled and tanker truck water among the rural population.
 
-  According to [@citeUSAID] one of the primary issues affecting Jordan is the loss of water through leaky pipes, theft and underbilling, the metering of water in the population. Since Jordan lacks naturally occurring water resources the effective transportation of their water is going to be the primary way the country can reduce the costs of delivering water to its citizens.
+  According to [@citeUSAID] one of the primary issues affecting Jordan is the loss of water through leaky pipes, theft and underbilling, the metering of water in the population. Brookings[@citeBroook] also notes that although much of the population has water piped into their residence much of that population only receives 12hours of water supply per week.
+  
+  Since Jordan lacks naturally occurring water resources the effective transportation of their water is going to be the primary way the country can reduce the costs of delivering water to its citizens. To meet these challenges iniatives like the Jordan Water Project[@citeJWP] are being developed.
 
 ## Weaknesses and next steps
 
