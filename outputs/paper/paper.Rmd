@@ -42,7 +42,7 @@ Data <-
 
   The survey covers 7600 households, the sample is nationally representative, the intent of the survey was to provide information on levels of fertility, infant and child mortality and family planning. Of this survey, this analysis is focused on the information regarding the source of water and the time availability of water. This information was available in the JPFHS report on page 32, table 2.7.
   
-  To compile the data set, the R language was used, [@citeR], along with the packages, Pointblank [@citepointblank], haven [@citehaven], the paper was compiled using Knitr [@citeknitr] and KableExtra[@citeakableExtra] packages. The table was acquired through the PDF document using the package PDFtools [@citepdftools]. Also made use of reshape2 [@citereshape2] in manipulating the data to creae plots.
+  To compile the data set, the R language was used[@citeR], along with the packages, Pointblank [@citepointblank], haven [@citehaven], the paper was compiled using Knitr [@citeknitr] and KableExtra[@citeakableExtra] packages. The table was acquired through the PDF document using the package PDFtools [@citepdftools]. Also made use of reshape2 [@citereshape2] in manipulating the data to creae plots.
 
 Table \@ref(tab:tab1) gives a small look at the dataset.
 
@@ -54,15 +54,15 @@ kable_styling(full_width = F) %>%
 kable_styling(latex_options = "hold_position")
 ```
 
-There are a total of 10 different sources of water captured by the survey, Piped into residence, Public tap, well in residence, public well, spring, rainwater, tanker truck, bottled water, and other. Respondents were grouped into two categories, urban and rural.
+  There are a total of 10 different sources of water captured by the survey, Piped into residence, Public tap, well in residence, public well, spring, rainwater, tanker truck, bottled water, and other. Respondents were grouped into two categories, urban and rural.
 
-Additionally the time to the water source is given as an over or under of 15 minutes.
+  Additionally the time to the water source is given as an over or under of 15 minutes.
 
 \newpage
 
 # Results {#Results}
 
-From Figure \@ref(fig:fig1) we see a breakdown comparing the urban and rural residents sources of water, along with a total for the population of Jordan. From this table we see that the vast majority of residents from both populations receive their water via a pipe directly into their residence. This is a positive as it means these people have quick and direct access to a water source.
+  From Figure \@ref(fig:fig1) we see a breakdown comparing the urban and rural residents sources of water, along with a total for the population of Jordan. From this table we see that the vast majority of residents from both populations receive their water via a pipe directly into their residence. This is a positive as it means these people have quick and direct access to a water source.
 
 ```{r fig1, echo = FALSE, fig.cap = "Bar plot of water sources"}
 ### Bar plot of water sources ###
@@ -75,9 +75,11 @@ p <- ggplot(df_long, aes(x = Characteristic, y = value, fill = variable)) + geom
 
 p + coord_flip()
 ```
+
+
 \newpage
 
-In Figure \@ref(fig:fig2) we take a closer look at a similar plot but with the piped into residence source removed.
+  In Figure \@ref(fig:fig2) we take a closer look at a similar plot but with the piped into residence source removed.
 
 ```{r fig2, echo = FALSE, fig.cap = "Bar plot without piped into residence response"}
 ### Reduced Bar Plot ###
@@ -92,7 +94,9 @@ q <- ggplot(df_long2, aes(x = Characteristic, y = value, fill = variable)) + geo
 q + coord_flip()
 ```
 
-Unsurprisingly the majority of natural water sources such as wells are being used by rural residents, making up 3.7% of all rural water sources compared to the 1.1% asmong urban residents. Also Springs are only used by rural residents, making up 2.3% of rural sources.
+  Unsurprisingly the majority of natural water sources such as wells are being used by rural residents, making up 3.7% of all rural water sources compared to the 1.1% asmong urban residents. Also Springs are only used by rural residents, making up 2.3% of rural sources. The relatively large number of tanker truck sources for rural residents is somewhat surprising considering in many parts of the Western world the main alternative to piped water sources would presumably be a well. More information regarding this seemingly strange occurence is given in section \@ref(FirstPoint)
+  
+  
 
 ```{r fig3, echo = FALSE, fig.cap = "Water available within 15 minutes",fig.width=4,fig.height=3}
 ### Bar plot showing water availability ###
@@ -105,19 +109,19 @@ q <- ggplot(df_long3, aes(x = Characteristic, y = value, fill = variable)) + geo
 q
 ```
 
-As we can see both rural and urban residences can access water quite readily  in the country of Jordan.
+  As we can see both rural and urban residences can access water quite readily  in the country of Jordan. With rural residents slightly trailing, though that's not unexpected.
 
 # Discussion {#Discussion}
 
 ## Water in Jordan {#FirstPoint}
 
-According to the United States Agency for International Development[@citeUSAID] "Jordan is one of the most water-scarce countries in the world", the country faces problems with it's ground water resources being drained twice as fast as they can be replenished. This explains the lack of use of wells we see in the country in the dataset and the possible over reliance on bottled and tanker truck water among the rural population.
+  According to the United States Agency for International Development[@citeUSAID] "Jordan is one of the most water-scarce countries in the world", the country faces problems with it's ground water resources being drained twice as fast as they can be replenished. This explains the lack of use of wells we see in the country in the dataset and the possible over reliance on bottled and tanker truck water among the rural population.
 
-According to [@citeUSAID] one of the primary issues affecting Jordan is the loss of water through leaky pipes, theft and underbilling, the metering of water in the population. Since Jordan lacks naturally occurring water resources the effective transportation of their water is going to be the primary way the country can reduce the costs of delivering water to its citizens.
+  According to [@citeUSAID] one of the primary issues affecting Jordan is the loss of water through leaky pipes, theft and underbilling, the metering of water in the population. Since Jordan lacks naturally occurring water resources the effective transportation of their water is going to be the primary way the country can reduce the costs of delivering water to its citizens.
 
 ## Weaknesses and next steps
 
-More information regarding the availability deficiencies would be the next steps. With pipes being both the primary source but also according to points made in section \@ref(FirstPoint) it's not just important for Jordan that residents have piped water for easy access but also the quality of those piped sources as the country faces issues of water conservation. Further investigation regarding the quality of those pipes would help to establish a better idea of the water 
+  More information regarding the availability deficiencies would be the next steps. With pipes being both the primary source but also according to points made in section \@ref(FirstPoint) it's not just important for Jordan that residents have piped water for easy access but also the quality of those piped sources as the country faces issues of water conservation. Further investigation regarding the quality of those pipes would help to establish a better idea of the water 
 
 \newpage
 

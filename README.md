@@ -46,3 +46,7 @@ Compose paper with analysis.
 4.[knitr](https://www.rdocumentation.org/packages/knitr/versions/1.30)
 
 5.[haven](https://www.rdocumentation.org/packages/haven/versions/2.4.3)
+
+6.[reshape2](https://www.rdocumentation.org/packages/reshape2/versions/1.4.4)
+
+7.[kableExtra](https://www.rdocumentation.org/packages/kableExtra/versions/1.3.4)
