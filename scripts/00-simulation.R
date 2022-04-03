@@ -1,7 +1,7 @@
 library(tidyverse)
 
 ### Simulating Data based on table percentages ###
-
+set.seed(1)
 n = 1000
 p = c(97.1,0,1.1,0,0,0.3,1.0,0.3,0.1)
 sample_urban <- sample(c("Piped into residence", "Public tap","Well in residence",
