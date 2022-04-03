@@ -271,7 +271,7 @@ Datasheet questions from @gebru2021datasheets
 
 ## Code {-}
 
-Repository associated with this analysis is available at [github](https://github.com/Jon-Goodwin/Paper-4)]
+Repository associated with this analysis is available at [github](https://github.com/Jon-Goodwin/Paper-4)
 
 \newpage
 
