@@ -4,66 +4,120 @@ author:
   - Jonathan Goodwin
 date: "`r format(Sys.time(), '%d %B %Y')`"
 abstract: "Water source and availability are important factors in determining the health and safety of a society. We obtain data regarding the source of water in Jordan and the time it takes residents to access it. We find that the most common source of water is piped into residents, and that a significant portion of Rural residents are receiving water through a tanker truck. These findings have implication for the further development of infrastrcuture in Jordan."
+header-includes:
+  - \usepackage{float}
+  - \floatplacement{figure}{H}
 output:
   bookdown::pdf_document2
 toc: FALSE
 bibliography: references.bib
 ---
 ```{r setup, include=FALSE,warning = FALSE, message = FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message= FALSE, fig.pos = 'H')
 library(tidyverse)
 library(kableExtra)
+library(reshape2)
 ```
-
-```{r, echo = F, warning = F, message = F, results = F}
+```{r, echo = F}
 ### Reading CSV ###
 Data <- 
   read.csv(here::here("outputs/data/cleaned_data.csv"))
 ```
 
-# Introduction
+# Introduction {#Intro}
 
-You can and should cross-reference sections and sub-sections. For instance, Section \@ref(data). R Markdown automatically makes the sections lower case and adds a dash to spaces to generate labels, for instance, Section \@ref(first-discussion-point). 
+  Sources of water are important in understanding the living conditions of the population of Jordan. Most of the population that answered the survey do use a piped water source into their residence. Access to water both in a timely manner and low cost is important to allowing people to live a secure life.
 
+  We analyzed the sources of water for two subsets of the Jordan population, urband and rural residents. From Figure \@ref(fig:fig1) and Figure \@ref(fig:fig2), we can see that both urban and rural residents primarly source their water from pipes into their residence directly. However we also find that tanker trucks make up a significant source of water for rural residents.
 
+  This information is relevant to the further development and enhancement of living conditions for rural and urban residents of Jordan. Gaps in the availability of water for rural and urban residents can be identified and addressed by the Government of Jordan.
 
-# Data
+  In section \@ref(Data) we talk about the process of gathering and analyzing the dataset. Then in section \@ref(Results) we discuss the implications of the dataset presented. Finally in section \@ref(Discussion) we discuss implications for the Jordan residents, as well as the weakness of the study and the further investigation that may be useful to the topic of water security for the residents of Jordan.
+
+\newpage
+
+# Data {#Data}
 
   The dataset is from the Jordan Population and Family Health Survey(JPFHS). The survey was conducted by the Department of Statistics, [@citeDOS] from June 7, to October 31, of the year 1997,through the Demographic and Health Survey(DHS) program.The survey was funded by the U.S Agency for International Development, while Macro International Inc. provided technical support of the survey.
 
-  The survey covers 7600 households, the sample is nationally represenative, the intent of the survey was to provide information on levels of fertility, infant and child mortality and family planning. Of this survey, this analysis is focused on the information regarding the source of water and the time availability of water. This information was available in the JPFHS report on page 32, table 2.7.
+  The survey covers 7600 households, the sample is nationally representative, the intent of the survey was to provide information on levels of fertility, infant and child mortality and family planning. Of this survey, this analysis is focused on the information regarding the source of water and the time availability of water. This information was available in the JPFHS report on page 32, table 2.7.
   
-  To compile the data set, the R language was used, [@citeR], along with the packages, Pointblank [citePointblank], haven [citehaven], the paper [@citeknitr]
-  
-  
-```{r, echo = FALSE}
+  To compile the data set, the R language was used, [@citeR], along with the packages, Pointblank [@citepointblank], haven [@citehaven], the paper was compiled using Knitr [@citeknitr] and KableExtra[@citeakableExtra] packages. The table was acquired through the PDF document using the package PDFtools [@citepdftools]. Also made use of reshape2 [@citereshape2] in manipulating the data to creae plots.
 
+Table \@ref(tab:tab1) gives a small look at the dataset.
+
+```{r tab1, echo = FALSE, fig.pos = 'H'}
+### Buidling Table Excerpt ###
+data = Data[,-1]
+knitr::kable(head(data),booktabs = TRUE, align = "c", caption = "Excerpt of dataset") %>% 
+kable_styling(full_width = F) %>%
+kable_styling(latex_options = "hold_position")
 ```
 
-Talk more about it.
+There are a total of 10 different sources of water captured by the survey, Piped into residence, Public tap, well in residence, public well, spring, rainwater, tanker truck, bottled water, and other. Respondents were grouped into two categories, urban and rural.
 
-Also bills and their average. (Notice how you can change the height and width so they don't take the whole page?)
+Additionally the time to the water source is given as an over or under of 15 minutes.
 
-```{r, echo = FALSE}
+\newpage
 
+# Results {#Results}
 
+From Figure \@ref(fig:fig1) we see a breakdown comparing the urban and rural residents sources of water, along with a total for the population of Jordan. From this table we see that the vast majority of residents from both populations receive their water via a pipe directly into their residence. This is a positive as it means these people have quick and direct access to a water source.
 
+```{r fig1, echo = FALSE, fig.cap = "Bar plot of water sources"}
+### Bar plot of water sources ###
+df <- data[-11,]
+df1 <- df[-1,]
+df_long <- melt(df1)
+p <- ggplot(df_long, aes(x = Characteristic, y = value, fill = variable)) + geom_bar(stat = "identity", position = "dodge") +
+  xlab("Source of Water") +
+  ylab("Percent of Population")
+
+p + coord_flip()
+```
+\newpage
+
+In Figure \@ref(fig:fig2) we take a closer look at a similar plot but with the piped into residence source removed.
+
+```{r fig2, echo = FALSE, fig.cap = "Bar plot without piped into residence response"}
+### Reduced Bar Plot ###
+df.2 <- data[-11,]
+df.2 <- df[-1,]
+df.2 <- df.2[-1,]
+df_long2 <- melt(df.2)
+q <- ggplot(df_long2, aes(x = Characteristic, y = value, fill = variable)) + geom_bar(stat = "identity", position = "dodge") +
+  xlab("Source of Water") +
+  ylab("Percent of Population")
+
+q + coord_flip()
 ```
 
-Talk way more about it. 
+Unsurprisingly the majority of natural water sources such as wells are being used by rural residents, making up 3.7% of all rural water sources compared to the 1.1% asmong urban residents. Also Springs are only used by rural residents, making up 2.3% of rural sources.
 
+```{r fig3, echo = FALSE, fig.cap = "Water available within 15 minutes",fig.width=4,fig.height=3}
+### Bar plot showing water availability ###
+df.3 <- data[11,]
+df_long3 <- melt(df.3)
+q <- ggplot(df_long3, aes(x = Characteristic, y = value, fill = variable)) + geom_bar(stat = "identity", position = "dodge") +
+  xlab("") +
+  ylab("Percent of Population")
 
-# Results
+q
+```
 
-# Discussion
+As we can see both rural and urban residences can access water quite readily  in the country of Jordan.
 
-## First discussion point
+# Discussion {#Discussion}
 
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this. 
+## Water in Jordan {#FirstPoint}
+
+According to the United States Agency for International Development[@citeUSAID] "Jordan is one of the most water-scarce countries in the world", the country faces problems with it's ground water resources being drained twice as fast as they can be replenished. This explains the lack of use of wells we see in the country in the dataset and the possible over reliance on bottled and tanker truck water among the rural population.
+
+According to [@citeUSAID] one of the primary issues affecting Jordan is the loss of water through leaky pipes, theft and underbilling, the metering of water in the population. Since Jordan lacks naturally occurring water resources the effective transportation of their water is going to be the primary way the country can reduce the costs of delivering water to its citizens.
 
 ## Weaknesses and next steps
 
-More information regarding the availability deficiencies would be the next steps. Are the rural areas receiving water via tanker truck completely remote or can they receive piped water sources?
+More information regarding the availability deficiencies would be the next steps. With pipes being both the primary source but also according to points made in section \@ref(FirstPoint) it's not just important for Jordan that residents have piped water for easy access but also the quality of those piped sources as the country faces issues of water conservation. Further investigation regarding the quality of those pipes would help to establish a better idea of the water 
 
 \newpage
 
@@ -71,7 +125,7 @@ More information regarding the availability deficiencies would be the next steps
 
 # Appendix {-}
 
-## DataSheet
+## DataSheet {-}
 
 Datasheet questions from @gebru2021datasheets
 
@@ -197,7 +251,7 @@ Datasheet questions from @gebru2021datasheets
 1. *Who will be supporting/hosting/maintaining the dataset?*
 	- The dataset will be available on Github
 2. *How can the owner/curator/manager of the dataset be contacted (for example, email address)?*
-	- 
+	- No.
 3. *Is there an erratum? If so, please provide a link or other access point.*
 	- No.
 4. *Will the dataset be updated (for example, to correct labeling errors, add new instances, delete instances)? If so, please describe how often, by whom, and how updates will be communicated to dataset consumers (for example, mailing list, GitHub)?*
@@ -210,11 +264,12 @@ Datasheet questions from @gebru2021datasheets
 	- No.
 8. *Any other comments?*
 	- No.
-	
-\newpage
 
-## Code
+## Code {-}
+
 Repository associated with this analysis is available at [github](https://github.com/Jon-Goodwin/Paper-4)]
+
+\newpage
 
 
 # References
