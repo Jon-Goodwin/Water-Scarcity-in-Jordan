@@ -1,3 +1,9 @@
+#### Preamble ####]
+# Purpose: To convert PDF Table to CSV to be read
+# Author: Jonathan Goodwin
+# Data: 28 March 2022
+# Contact: jon.goodwin@mail.utoronto.ca
+
 library(pdftools)
 library(tidyverse)
 ### Outline ###

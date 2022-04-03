@@ -1,5 +1,5 @@
 #### Preamble ####]
-# Purpose: To convert PDF Table to CSV to be read
+# Purpose: To clean raw_data csv
 # Author: Jonathan Goodwin
 # Data: 28 March 2022
 # Contact: jon.goodwin@mail.utoronto.ca

@@ -1,3 +1,9 @@
+#### Preamble ####]
+# Purpose: Simulate dataset
+# Author: Jonathan Goodwin
+# Data: 28 March 2022
+# Contact: jon.goodwin@mail.utoronto.ca
+
 library(tidyverse)
 
 ### Simulating Data based on table percentages ###
